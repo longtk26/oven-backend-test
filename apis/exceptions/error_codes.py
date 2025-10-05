@@ -1,8 +1,10 @@
 from enum  import Enum
 
-class AuthErrorCode(Enum):
-    INVALID_CREDENTIALS = "INVALID_CREDENTIALS"
+class ProductErrorCode(Enum):
+    PRODUCT_NOT_FOUND = "PRODUCT_NOT_FOUND"
+    OUT_OF_STOCK = "OUT_OF_STOCK"
+    INVALID_PRODUCT_DATA = "INVALID_PRODUCT_DATA"
 
-class UserErrorCode(Enum):
-    USER_ALREADY_EXISTS = "USER_ALREADY_EXISTS"
-    USER_NOT_FOUND = "USER_NOT_FOUND"
+class FileErrorCode(Enum):
+    FILE_NOT_FOUND = "FILE_NOT_FOUND"
+    INVALID_FILE_TYPE = "INVALID_FILE_TYPE"

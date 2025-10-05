@@ -21,14 +21,14 @@ def serializer(body=None, query=None):
                 body_serializer = body(data=request.data)
                 if not body_serializer.is_valid():
                     return Response(body_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-                inject_args["body"] = body_serializer
+                inject_args["body"] = body_serializer.validated_data
 
             # Handle query serializer
             if query and "query" in sig.parameters:
                 query_serializer = query(data=request.query_params)
                 if not query_serializer.is_valid():
                     return Response(query_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-                inject_args["query"] = query_serializer
+                inject_args["query"] = query_serializer.validated_data
 
             # Only pass request if it's in the function signature
             if "request" in sig.parameters:

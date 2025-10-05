@@ -1,9 +1,21 @@
-from .auth import (
-    SignUpRequestSerializer,
-    SignUpResponseSerializer,
+from .products_serializer import (
+    CreateProductsRequestSerializer,
+    CreateProductsResponseSerializer,
+    UpdateProductsRequestSerializer,
+    UpdateProductsResponseSerializer,
+    DeleteProductsResponseSerializer,
+    GetProductDetailResponseSerializer,
+    ListProductsRequestSerializer,
+    ListProductsResponseSerializer,
 )
 
 __all__ = [
-    "SignUpRequestSerializer",
-    "SignUpResponseSerializer",
+    "CreateProductsRequestSerializer",
+    "CreateProductsResponseSerializer",
+    "UpdateProductsRequestSerializer",
+    "UpdateProductsResponseSerializer", 
+    "DeleteProductsResponseSerializer",
+    "GetProductDetailResponseSerializer",
+    "ListProductsRequestSerializer",
+    "ListProductsResponseSerializer",
 ]

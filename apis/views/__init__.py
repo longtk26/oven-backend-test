@@ -1,10 +1,6 @@
-from .auth import (
-    SignUpView,
-    LoginView,
+from .products_view import (
+    ListCreateProductsView,
+    ProductDetailView,
 )
 
-from .user import (
-    UserProfileView,
-)
-
-__all__ = ["SignUpView", "LoginView", "UserProfileView"]
+__all__ = ["ListCreateProductsView", "ProductDetailView"]
