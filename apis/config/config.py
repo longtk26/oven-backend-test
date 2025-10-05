@@ -8,7 +8,6 @@ class Config(BaseSettings):
     db_password: str = Field(env="DB_PASSWORD")
     db_host: str = Field(env="DB_HOST")
     db_port: int = Field(env="DB_PORT")
-    jwt_secret: str = Field(env="JWT_SECRET")
 
     class Config:
         env_file = ".env"
