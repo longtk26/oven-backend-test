@@ -16,8 +16,10 @@ Including another URLconf
 """
 
 from django.urls import path, include
+from django.conf.urls.static import static
 
 
 urlpatterns = [
     path("api/products", include("apis.routes.products_route")),
+    path("api/files", include("apis.routes.files_route")),
 ]
