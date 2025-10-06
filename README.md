@@ -272,7 +272,7 @@ uv pip install -r requirements.txt
 # Start PostgreSQL with Docker
 docker compose up -d db
 
-# Wait for database to be ready, then run migrations
+# !! Please create the database '<db_name>' in your PostgreSQL instance before running migrations.
 make mgup
 ```
 
@@ -302,7 +302,7 @@ make test           # Run all tests
 
 # Individual commands (using uv)
 uv run python manage.py makemigrations
-uv run python manage.py migrate
+uv run python manage.py migrate apis
 uv run python manage.py runserver
 uv run python manage.py test
 ```
