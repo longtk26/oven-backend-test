@@ -256,27 +256,21 @@ cd backend-test
 # Copy environment template
 cp .env.example .env
 
-# Edit .env file with your database credentials
-# DB_NAME=backend_test_db
-# DB_USER=postgres
-# DB_PASSWORD=your_secure_password
-# DB_HOST=localhost
-# DB_PORT=5432
 ```
 
 ### 3. Install Dependencies
 ```bash
 # Install Python dependencies using uv
-uv sync
+uv venv
+source .venv/bin/activate 
 
-# Or install from requirements.txt
 uv pip install -r requirements.txt
 ```
 
 ### 4. Database Setup
 ```bash
 # Start PostgreSQL with Docker
-docker-compose up -d db
+docker compose up -d db
 
 # Wait for database to be ready, then run migrations
 make mgup
@@ -320,33 +314,8 @@ uv run python manage.py test
 ```bash
 # Run all tests
 make test
-
-# Run specific test modules
-uv run python manage.py test libs.hashmap.test_hashmap
-uv run python manage.py test apis.service.test_products_service
-uv run python manage.py test libs.file_tree
-
-# Run with verbose output
-uv run python manage.py test --verbosity=2
 ```
 
-### Test Coverage
-
-The project includes comprehensive tests for:
-
-- **HashMap Implementation**: All operations, edge cases, collision handling
-- **Product Service**: CRUD operations, validation, error scenarios
-- **File Tree Structure**: Tree operations, depth limits, path handling
-- **API Endpoints**: Request validation, response formatting
-- **Repository Layer**: Database operations, error handling
-
-### Test Structure
-```
-tests/
-├── libs/hashmap/test_hashmap.py      # HashMap unit tests
-├── apis/service/test_products_service.py # Service layer tests
-└── [additional test files]
-```
 
 ## Custom Data Structures
 
@@ -361,11 +330,6 @@ A complete HashMap implementation built from scratch with:
 - **Collision Resolution**: Chaining with linked lists for handling hash collisions
 - **Hash Function**: Custom string-based hash function with good distribution
 - **Full API**: `put()`, `get()`, `remove()`, `contains()`, `keys()`, `values()`, `items()`
-
-#### Performance
-- **Average Time Complexity**: O(1) for all core operations
-- **Worst Case**: O(n) when many collisions occur
-- **Space Complexity**: O(n) where n is the number of elements
 
 #### Usage Example
 ```python
@@ -392,7 +356,7 @@ items = hashmap.items()
 Hierarchical file organization using the custom HashMap:
 
 #### Features
-- **Tree Structure**: Support for nested folders up to 5 levels deep
+- **Tree Structure**: Support for nested folders up to 3 levels deep
 - **Fast Lookups**: O(1) file access using HashMap indexing
 - **Path Management**: Automatic parent directory creation
 - **JSON Export**: Complete tree structure in JSON format
@@ -449,25 +413,6 @@ docker-compose up -d db
 
 # Build and run application
 docker-compose up --build backend
-```
-
-### Production Deployment
-
-The included `Dockerfile` uses multi-stage builds for optimized production images:
-
-1. **Builder Stage**: Installs dependencies and compiles packages
-2. **Production Stage**: Minimal runtime image with security best practices
-
-```bash
-# Build production image
-docker build -t product-api:latest .
-
-# Run with environment variables
-docker run -d \
-  --name product-api \
-  -p 8000:8000 \
-  --env-file .env \
-  product-api:latest
 ```
 
 ### Docker Features
